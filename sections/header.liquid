@@ -1,0 +1,35 @@
+<div class="site_header" id="site_header">
+    <div class="container">
+        <div class="row">
+            <div class="col col-auto">
+                <div class="logo">
+                    <a href="/" class="site_logo">
+                        
+                        {% if section.settings.logo %}
+                            <img src="{{ section.settings.logo | img_url: '200x' }}" alt="">
+                        {% else %}
+                            <h2>{{ shop.name }}</h2>
+                        {% endif %}
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% schema %}
+{
+    "name":{
+        "en":"Header"
+    },
+    "settings": [
+        {
+            "type":"image_picker",
+            "id":"logo",
+            "label":"Site Logo"
+        }
+    ]
+}
+{% endschema %}
