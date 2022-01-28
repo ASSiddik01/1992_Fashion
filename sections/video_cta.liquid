@@ -1,0 +1,106 @@
+<div class="video-cta video-position-right" style="padding-top:50px;padding-bottom:50px">
+    <div class="row">
+
+
+        <div class="col">
+            <div class="left-v-cta-content">
+                <div style="background-image:url({{section.settings.image | img_url: '600x'}})" class="cta-content-bg">
+                    
+                </div>
+                <div class="cta-content-text">
+                    <h2>{{section.settings.title}}</h2>
+                    <div class="cta-content-innter">{{section.settings.content}}</div>
+                    {% if section.settings.link != blank %}
+                        <a href="{{section.settings.link}}"><i class="fa fa-angle-double-right"></i></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col my-auto">
+            <div class="cta-right-video">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/{{section.settings.video}}?rel=0" title="YouTube video" allowfullscreen></iframe>
+                          </div>
+                <h3>{{section.settings.video_title}}</h3>
+                {{section.settings.video_desc}}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% schema %}
+{
+    "name":{
+        "en":"Video CTA"
+    },
+    "settings":[
+        {
+            "type":"text",
+            "id":"title",
+            "label":{
+                "en":"Title"
+            },
+            "default":"Spring Girls"
+        },
+        {
+            "type":"text",
+            "id":"content",
+            "label":{
+                "en":"Content"
+            },
+            "default":"Girl LookBook 2022"
+        },
+        {
+            "type":"url",
+            "id":"link",
+            "label":{
+                "en":"Link"
+            }
+        },
+        {
+            "type":"image_picker",
+            "id":"image",
+            "label":{
+                "en":"Image"
+            }
+        },
+        {
+            "type":"text",
+            "id":"video",
+            "label":{
+                "en":"Video ID"
+            }
+        },
+        {
+            "type":"text",
+            "id":"video_title",
+            "label":{
+                "en":"Video Title"
+            }
+        },
+        {
+            "type":"text",
+            "id":"video_desc",
+            "label":{
+                "en":"Video Description"
+            }
+        }
+    ],
+    "presets":[
+        {
+            "name": {
+                "en":"Video CTA"
+            },
+            "category": {
+                "en": "Home"
+            },
+            "settings": {
+                "title": "Spring Girls"
+            }
+              
+        }
+    ]
+}
+{% endschema %}

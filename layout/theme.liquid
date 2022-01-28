@@ -48,7 +48,13 @@
   {% endif %} -->
 
   <main role="main">
-    {{ content_for_layout }}
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          {{ content_for_layout }}
+        </div>
+      </div>
+    </div>
   </main>
 
   <!-- Bootstrap JS -->
