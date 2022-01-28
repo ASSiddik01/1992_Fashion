@@ -1,10 +1,26 @@
 <div class="site_header" id="site_header">
     <div class="container">
         <div class="row">
-            <div class="col col-auto">
+            <div class="col">
+                <div class="header_top_area">
+                    <div class="row">
+                        <div class="col">
+                            <i class="fas fa-bullhorn"></i> Welcome to 1992 Online Shop! Let’s start to shopping NOW !!!
+                        </div>
+                        <div class="col col-auto user_menu">
+                            <a href="">Login</a>
+                            <a href="">Register</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
                 <div class="logo">
                     <a href="/" class="site_logo">
-                        
+
                         {% if section.settings.logo %}
                             <img src="{{ section.settings.logo | img_url: '200x' }}" alt="">
                         {% else %}
@@ -13,8 +29,41 @@
                         
                     </a>
                 </div>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    {% for link in linklists.main-menu.links %}
+                    {% assign child_list_handle = link.title | handleize %}
+                    {% if linklists[child_list_handle].links != blank %}
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle active" href="{{ link.url }}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ link.title }}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                {% for childlink in linklists[child_list_handle].links %}
+                            <li><a class="dropdown-item " href="{{ childlink.url }}">{{ childlink.title | escape }}</a></li>
+                            {% endfor %}
+                            </ul>
+                        </li>
+                  {% else %}
+                      
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ link.url }}">{{ link.title }}</a>
+                    </li>
+                  {% endif %}
+                  {% endfor %}
+                </ul>
+                <div class="d-flex my-auto text-right">
+                    <span class="search_tigger"><i class="fas fa-search"></i></span>
+                    <a href="/cart" class="cart_icon"><i class="fas fa-shopping-cart"></i> <span class="cart_count">{{ cart.item_count }}</span> </a>
+                </div>
+              </div>
             </div>
-        </div>
+          </nav>
+
+
     </div>
 </div>
 
